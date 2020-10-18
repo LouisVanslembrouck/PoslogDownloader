@@ -11,5 +11,7 @@ namespace PoslogDownloader
         public string Id { get; set; }
         public string Hostname { get; set; }
         public string Date { get; set; }
+
+        public string Hour { get; set; }
     }
 }

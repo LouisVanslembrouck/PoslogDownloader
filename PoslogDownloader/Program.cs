@@ -28,6 +28,7 @@ namespace PoslogDownloader
             string input_file = Path.Combine(cwd, "poslog.txt");
             string output_file = Path.Combine(cwd, "output.txt");
             string output_dir = Path.Combine(cwd, "Copied");
+            string search_dir = @"C:\Users\louis\Documents\Receipt_Backup\";
             //string user = "root";
             string user = "louisvanslembrouck@gmail.com";
             string password = "Botermans123";
@@ -36,30 +37,52 @@ namespace PoslogDownloader
             List<string> success = new List<string>();
             List<string> failed = new List<string>();
 
-            // Loop to fetch all files
-
             foreach(var item in Retrieve_input(input_file))
             {
-                Console.WriteLine(item.Id);
-                Console.WriteLine(item.Hostname);
-                Console.WriteLine(item.Date);
+
+                // Code to connect to each host and retrieve the file.
+                // PROD Version: (var client = new SftpClient(item.Hostname, 22, user, Get_pwd(item.hostname))
+
+                DateTime date = Convert.ToDateTime(item.Date);
+                DateTime hour = Convert.ToDateTime(item.Hour);
+
+                // Month has to be parsed as 2 digits if < 10
+
+                string filePath = Path.Combine(search_dir, date.Year.ToString(), date.Month.ToString(), date.Day.ToString(), hour.Hour.ToString());
+                string fileName = Path.Combine(search_dir, date.Year.ToString(), date.Month.ToString(), date.Day.ToString(), hour.Hour.ToString(), item.Id);
+
+
+                using (var client = new SftpClient(item.Hostname, 22, user, password))
+                {
+                    try
+                    {
+                        client.Connect();
+
+                        if(!client.Exists(fileName))
+                        {
+                            Console.WriteLine("File not found on remote host.");
+                        }
+                        else
+                        {
+                            using (Stream fileStream = File.OpenWrite(Path.Combine(output_dir, item.Id)))
+                            {
+                                client.DownloadFile(fileName, fileStream);
+                            }
+
+                            success.Add(item.ToString());
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        failed.Add(item.ToString());
+                    }
+                }
             }
 
+            Console.WriteLine(failed);
+            Console.WriteLine(success);
             Console.ReadLine();
 
-            using (var client = new SftpClient("louis", 22, user, password))
-            {
-                try
-                {
-                    client.Connect();
-                    client.Disconnect();
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    Console.ReadLine();
-                }                
-            }
         }
         
 
@@ -88,7 +111,8 @@ namespace PoslogDownloader
                 {
                     Id = entries[0],
                     Hostname = entries[1],
-                    Date = entries[2]
+                    Date = entries[2],
+                    Hour = entries[3]
                 };
 
                 files.Add(Items);
@@ -97,5 +121,19 @@ namespace PoslogDownloader
             // !!! Very Sensitive to whitespace between words !!!
             return files;
         }
-}
+
+        static bool CheckIfRemoteFileExists(SftpClient sftpClient, string remoteFolderName, string remotefileName)
+        {
+
+            // Checks if Remote folder contains the given file name
+            
+            bool isFileExists = sftpClient
+                                .ListDirectory(remoteFolderName)
+                                .Any(
+                                        f => f.IsRegularFile &&
+                                        f.Name.ToLower() == remotefileName.ToLower()
+                                    );
+            return isFileExists;
+        }
+    }
 }
