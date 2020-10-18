@@ -39,8 +39,6 @@ namespace PoslogDownloader
 
             foreach(var item in Retrieve_input(input_file))
             {
-
-                // Code to connect to each host and retrieve the file.
                 // PROD Version: (var client = new SftpClient(item.Hostname, 22, user, Get_pwd(item.hostname))
 
                 DateTime date = Convert.ToDateTime(item.Date);
@@ -120,20 +118,6 @@ namespace PoslogDownloader
 
             // !!! Very Sensitive to whitespace between words !!!
             return files;
-        }
-
-        static bool CheckIfRemoteFileExists(SftpClient sftpClient, string remoteFolderName, string remotefileName)
-        {
-
-            // Checks if Remote folder contains the given file name
-            
-            bool isFileExists = sftpClient
-                                .ListDirectory(remoteFolderName)
-                                .Any(
-                                        f => f.IsRegularFile &&
-                                        f.Name.ToLower() == remotefileName.ToLower()
-                                    );
-            return isFileExists;
         }
     }
 }
