@@ -28,11 +28,9 @@ namespace PoslogDownloader
             string input_file = Path.Combine(cwd, "poslog.txt");
             string output_file = Path.Combine(cwd, "output.txt");
             string output_dir = Path.Combine(cwd, "Copied");
-            string search_dir = @"C:\Users\louis\Documents\Receipt_Backup\";
-            //string user = "root";
+            string search_dir = @"C:\Users\louis\Documents\Receipt_Backup";
             string user = "louisvanslembrouck@gmail.com";
-            string password = "Botermans123";
-
+            //string user = "root";
 
             List<string> success = new List<string>();
             List<string> failed = new List<string>();
@@ -49,6 +47,8 @@ namespace PoslogDownloader
                 string filePath = Path.Combine(search_dir, date.Year.ToString(), date.Month.ToString(), date.Day.ToString(), hour.Hour.ToString());
                 string fileName = Path.Combine(search_dir, date.Year.ToString(), date.Month.ToString(), date.Day.ToString(), hour.Hour.ToString(), item.Id);
 
+                // string password = Get_pwd(item.Id);
+                string password = "Botermans123";
 
                 using (var client = new SftpClient(item.Hostname, 22, user, password))
                 {
