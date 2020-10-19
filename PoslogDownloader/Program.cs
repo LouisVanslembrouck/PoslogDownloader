@@ -12,6 +12,7 @@ using System.Xml;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.IO.Ports;
+using System.Data;
 
 namespace PoslogDownloader
 {
@@ -21,66 +22,84 @@ namespace PoslogDownloader
         public static void Main()
         {
             Console.WriteLine("Poslog Downloader - For instructions please consult the Readme file.");
-            Console.WriteLine("Hit enter to continue...");
+            Console.WriteLine("Press enter to continue...");
             Console.ReadLine();
 
             string cwd = Directory.GetCurrentDirectory();
             string input_file = Path.Combine(cwd, "poslog.txt");
             string output_file = Path.Combine(cwd, "output.txt");
             string output_dir = Path.Combine(cwd, "Copied");
-            string search_dir = @"C:\Users\louis\Documents\Receipt_Backup";
+            string search_dir = "/C:/Centric/Backup/OBP";
             string user = "louisvanslembrouck@gmail.com";
             //string user = "root";
 
             List<string> success = new List<string>();
             List<string> failed = new List<string>();
 
-            foreach(var item in Retrieve_input(input_file))
-            {
-                // PROD Version: (var client = new SftpClient(item.Hostname, 22, user, Get_pwd(item.hostname))
 
+            // Check if output folder exists
+            if (!Directory.Exists(output_dir))
+            {
+                Directory.CreateDirectory(output_dir);
+            }
+            else
+            {
+                Console.WriteLine("Do you wish to remove previously found files from output directory? y/n");
+                string output = Console.ReadLine();
+
+                if(output == "y")
+                {
+                    Directory.Delete(output_dir, true);
+                    Directory.CreateDirectory(output_dir);
+                }
+            }
+
+            foreach (var item in Retrieve_input(input_file))
+            {
                 DateTime date = Convert.ToDateTime(item.Date);
                 DateTime hour = Convert.ToDateTime(item.Hour);
-
                 // Month has to be parsed as 2 digits if < 10
 
-                string filePath = Path.Combine(search_dir, date.Year.ToString(), date.Month.ToString(), date.Day.ToString(), hour.Hour.ToString());
-                string fileName = Path.Combine(search_dir, date.Year.ToString(), date.Month.ToString(), date.Day.ToString(), hour.Hour.ToString(), item.Id);
+                string Month = date.Month.ToString();
 
-                // string password = Get_pwd(item.Id);
+                if (Month.Length < 2)
+                {
+                    Month = "0" + Month;
+                }
+
+                string filePath = Path.Combine(search_dir, date.Year.ToString(), Month, date.Day.ToString(), hour.Hour.ToString());
+                string fileName = Path.Combine(search_dir, date.Year.ToString(), Month, date.Day.ToString(), hour.Hour.ToString(), item.Id);
+
+                // string password = Get_pwd(item.Hostname);
                 string password = "Botermans123";
 
+
+                // PROD Version: (var client = new SftpClient(item.Hostname, 22, user, Get_pwd(item.hostname))
                 using (var client = new SftpClient(item.Hostname, 22, user, password))
                 {
                     try
                     {
+                        Console.WriteLine("\n" + $"Downloading {item.Id} from {item.Hostname}...");
                         client.Connect();
 
-                        if(!client.Exists(fileName))
+                        using (Stream file = File.OpenWrite(Path.Combine(output_dir, item.Id.ToString())))
                         {
-                            Console.WriteLine("File not found on remote host.");
+                            client.DownloadFile(fileName, file);
                         }
-                        else
-                        {
-                            using (Stream fileStream = File.OpenWrite(Path.Combine(output_dir, item.Id)))
-                            {
-                                client.DownloadFile(fileName, fileStream);
-                            }
 
-                            success.Add(item.ToString());
-                        }
+                        Console.WriteLine($"Downloaded {item.Id} from {item.Hostname}.");
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
-                        failed.Add(item.ToString());
+                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e}.");
+                        Console.ReadLine();
                     }
                 }
             }
 
-            Console.WriteLine(failed);
-            Console.WriteLine(success);
+            Console.WriteLine("\n" + "Please check Copied folder in current directory for donwloaded files.");
+            Console.WriteLine("Press enter to exit...");
             Console.ReadLine();
-
         }
         
 
