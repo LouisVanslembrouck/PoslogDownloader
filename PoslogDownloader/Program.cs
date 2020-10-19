@@ -30,8 +30,7 @@ namespace PoslogDownloader
             string output_file = Path.Combine(cwd, "output.txt");
             string output_dir = Path.Combine(cwd, "Copied");
             string search_dir = "/C:/Centric/Backup/OBP";
-            string user = "louisvanslembrouck@gmail.com";
-            //string user = "root";
+            string user = "root";
 
             List<string> success = new List<string>();
             List<string> failed = new List<string>();
@@ -58,10 +57,9 @@ namespace PoslogDownloader
             {
                 DateTime date = Convert.ToDateTime(item.Date);
                 DateTime hour = Convert.ToDateTime(item.Hour);
-                // Month has to be parsed as 2 digits if < 10
-
                 string Month = date.Month.ToString();
 
+                // Month has to be parsed as 2 digits if < 10
                 if (Month.Length < 2)
                 {
                     Month = "0" + Month;
@@ -69,12 +67,8 @@ namespace PoslogDownloader
 
                 string filePath = Path.Combine(search_dir, date.Year.ToString(), Month, date.Day.ToString(), hour.Hour.ToString());
                 string fileName = Path.Combine(search_dir, date.Year.ToString(), Month, date.Day.ToString(), hour.Hour.ToString(), item.Id);
+                string password = Get_pwd(item.Hostname);
 
-                // string password = Get_pwd(item.Hostname);
-                string password = "Botermans123";
-
-
-                // PROD Version: (var client = new SftpClient(item.Hostname, 22, user, Get_pwd(item.hostname))
                 using (var client = new SftpClient(item.Hostname, 22, user, password))
                 {
                     try
@@ -115,7 +109,7 @@ namespace PoslogDownloader
         static List<Pair> Retrieve_input(string file)
         {
 
-            // Method returns a list of Pairs to retrieve.
+            // Method returns a list of Pairs (Filename, Hostname, Date, Hour) to retrieve.
 
             List<string> readText = File.ReadAllLines(file).ToList();
             List<Pair> files = new List<Pair>();
