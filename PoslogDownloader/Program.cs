@@ -86,7 +86,6 @@ namespace PoslogDownloader
                     catch (Exception e)
                     {
                         Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e}.");
-                        Console.ReadLine();
                     }
                 }
             }
