@@ -73,7 +73,7 @@ namespace PoslogDownloader
                 {
                     try
                     {
-                        Console.WriteLine("\n" + $"Downloading {item.Id} from {item.Hostname}...");
+                        Console.WriteLine("\n" + $"Downloading {item.Id} from {filePath} on {item.Hostname}...");
                         client.Connect();
 
                         using (Stream file = File.OpenWrite(Path.Combine(output_dir, item.Id.ToString())))
@@ -82,10 +82,19 @@ namespace PoslogDownloader
                         }
 
                         Console.WriteLine($"Downloaded {item.Id} from {item.Hostname}.");
+
                     }
-                    catch (Exception e)
+                    catch (System.Net.Sockets.SocketException e)
                     {
                         Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e}.");
+                    }
+                    catch (SshException e)
+                    {
+                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e}.");
+                    }
+                    catch (FileNotFoundException e)
+                    {
+                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to FileNotFoundException in {filePath}.");
                     }
                 }
             }
@@ -109,27 +118,38 @@ namespace PoslogDownloader
         {
 
             // Method returns a list of Pairs (Filename, Hostname, Date, Hour) to retrieve.
-
-            List<string> readText = File.ReadAllLines(file).ToList();
-            List<Pair> files = new List<Pair>();
-
-            foreach (var line in readText)
+            if (File.Exists(file))
             {
-                string[] entries = line.Split();
+                List<string> readText = File.ReadAllLines(file).ToList();
+                List<Pair> files = new List<Pair>();
 
-                Pair Items = new Pair
+                foreach (var line in readText)
                 {
-                    Id = entries[0],
-                    Hostname = entries[1],
-                    Date = entries[2],
-                    Hour = entries[3]
-                };
+                    string[] entries = line.Split();
 
-                files.Add(Items);
+                    Pair Items = new Pair
+                    {
+                        Id = entries[0],
+                        Hostname = entries[1],
+                        Date = entries[2],
+                        Hour = entries[3]
+                    };
+                    
+                    files.Add(Items);
+                }
+
+                // !!! Very Sensitive to whitespace between words !!!
+                return files;
             }
+            else
+            {
+                Console.WriteLine("No poslog.txt input file was provided, created dummy file.");
+                File.Create(file);
 
-            // !!! Very Sensitive to whitespace between words !!!
-            return files;
+                List<Pair> empty = new List<Pair>();
+
+                return empty;
+            }
         }
     }
 }
