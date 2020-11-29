@@ -82,19 +82,23 @@ namespace PoslogDownloader
                         }
 
                         Console.WriteLine($"Downloaded {item.Id} from {item.Hostname}.");
+                        success.Add(fileName + " - " + item.Hostname);
 
                     }
                     catch (System.Net.Sockets.SocketException e)
                     {
                         Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e}.");
+                        failed.Add(fileName + " - " + item.Hostname);
                     }
                     catch (SshException e)
                     {
                         Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e}.");
+                        failed.Add(fileName + " " + item.Hostname);
                     }
                     catch (FileNotFoundException e)
                     {
-                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to FileNotFoundException in {filePath}.");
+                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e} in {filePath}.");
+                        failed.Add(fileName + " " + item.Hostname);
                     }
                 }
             }
