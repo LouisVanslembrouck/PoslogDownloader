@@ -21,37 +21,63 @@ namespace PoslogDownloader
 
         public static void Main()
         {
-            Console.WriteLine("Poslog Downloader - For instructions please consult the Readme file.");
-            Console.WriteLine("Press enter to continue...");
-            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Poslog Downloader - For instructions please consult the Readme file." + "\n");
 
+            // Initialize variables
             string cwd = Directory.GetCurrentDirectory();
             string input_file = Path.Combine(cwd, "poslog.txt");
             string output_file = Path.Combine(cwd, "output.txt");
             string output_dir = Path.Combine(cwd, "Copied");
-            string search_dir = "/C:/Centric/Backup/OBP";
+            string search_dir = "C:/Centric/Backup/OBP";
             string user = "root";
-
-            List<string> success = new List<string>();
-            List<string> failed = new List<string>();
+            string logfile = Path.Combine(cwd, "log.txt");
 
 
             // Check if output folder exists
             if (!Directory.Exists(output_dir))
             {
                 Directory.CreateDirectory(output_dir);
+
+                using (StreamWriter w = File.AppendText(logfile))
+                {
+                    w.WriteLine($"\nLog from last run on {DateTime.Now.ToLongDateString()} - {DateTime.Now.ToLongTimeString()}." + "\n");
+                }
             }
             else
             {
                 Console.WriteLine("Do you wish to remove previously found files from output directory? y/n");
                 string output = Console.ReadLine();
 
-                if(output == "y")
+                if (output == "y")
                 {
                     Directory.Delete(output_dir, true);
                     Directory.CreateDirectory(output_dir);
+
+                    using (StreamWriter w = File.AppendText(logfile))
+                    {
+                        w.WriteLine($"\nLog from last run on {DateTime.Now.ToLongDateString()} - {DateTime.Now.ToLongTimeString()}." + "\n");
+                    }
+                }
+                else if (output == "n")
+                {
+                    using (StreamWriter w = File.AppendText(logfile))
+                    {
+                        w.WriteLine($"\nLog from last run on {DateTime.Now.ToLongDateString()} - {DateTime.Now.ToLongTimeString()}." + "\n");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No valid input recieved, output directory will not be removed.");
+
+                    using (StreamWriter w = File.AppendText(logfile))
+                    {
+                        w.WriteLine($"\nLog from last run on {DateTime.Now.ToLongDateString()} - {DateTime.Now.ToLongTimeString()}." + "\n");
+                    }
                 }
             }
+
+
 
             foreach (var item in Retrieve_input(input_file))
             {
@@ -69,10 +95,13 @@ namespace PoslogDownloader
                 string fileName = Path.Combine(search_dir, date.Year.ToString(), Month, date.Day.ToString(), hour.Hour.ToString(), item.Id);
                 string password = Get_pwd(item.Hostname);
 
+                
+
                 using (var client = new SftpClient(item.Hostname, 22, user, password))
                 {
                     try
                     {
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\n" + $"Downloading {item.Id} from {filePath} on {item.Hostname}...");
                         client.Connect();
 
@@ -82,29 +111,53 @@ namespace PoslogDownloader
                         }
 
                         Console.WriteLine($"Downloaded {item.Id} from {item.Hostname}.");
-                        success.Add(fileName + " - " + item.Hostname);
-
+                        client.Disconnect();
+                        Thread.Sleep(2000);
                     }
+
                     catch (System.Net.Sockets.SocketException e)
                     {
-                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e}.");
-                        failed.Add(fileName + " - " + item.Hostname);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to SocketException.");
+
+                        // Log result to logfile.
+                        using (StreamWriter error = File.AppendText(logfile))
+                        {
+                            error.WriteLine($"Failed Downloading {item.Id} in {filePath} from {item.Hostname} due to {e.Message}.");
+                        }
                     }
+
                     catch (SshException e)
                     {
-                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e}.");
-                        failed.Add(fileName + " " + item.Hostname);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to SshException.");
+
+
+                        // Log result to logfile.
+                        using (StreamWriter error = File.AppendText(logfile))
+                        {
+                            error.WriteLine($"Failed Downloading {item.Id} in {filePath} from {item.Hostname} due to {e.Message}.");
+                        }
                     }
+
                     catch (FileNotFoundException e)
                     {
-                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to {e} in {filePath}.");
-                        failed.Add(fileName + " " + item.Hostname);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to FileNotFoundException in {filePath}.");
+
+                        // Log result to logfile.
+                        using (StreamWriter error = File.AppendText(logfile))
+                        {
+                            error.WriteLine($"Failed Downloading {item.Id} in {filePath} from {item.Hostname} due to {e.Message}.");
+                        }
                     }
                 }
             }
 
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n" + "Please check Copied folder in current directory for donwloaded files.");
-            Console.WriteLine("Press enter to exit...");
+            Console.WriteLine("Please check logfile for any failed files.");
+            Console.WriteLine("\nPress enter to exit...");
             Console.ReadLine();
         }
         
@@ -118,10 +171,12 @@ namespace PoslogDownloader
             return string.Concat("admin", result.Substring(0,4));
         }
 
+
         static List<Pair> Retrieve_input(string file)
         {
 
             // Method returns a list of Pairs (Filename, Hostname, Date, Hour) to retrieve.
+
             if (File.Exists(file))
             {
                 List<string> readText = File.ReadAllLines(file).ToList();
