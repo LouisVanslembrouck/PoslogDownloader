@@ -1,13 +1,14 @@
 ﻿using System;
 using System.IO;
 using Renci.SshNet;
+using Renci.SshNet.Sftp;
+using Renci.SshNet.Common;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
-using Renci.SshNet.Common;
 using System.Xml;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -29,7 +30,7 @@ namespace PoslogDownloader
             string input_file = Path.Combine(cwd, "poslog.txt");
             string output_file = Path.Combine(cwd, "output.txt");
             string output_dir = Path.Combine(cwd, "Copied");
-            string search_dir = "C:/Centric/Backup/OBP";
+            string search_dir = @"C:\Centric\Backup\OBP";
             string user = "root";
             string logfile = Path.Combine(cwd, "log.txt");
 
@@ -91,63 +92,46 @@ namespace PoslogDownloader
                     Month = "0" + Month;
                 }
 
-                string filePath = Path.Combine(search_dir, date.Year.ToString(), Month, date.Day.ToString(), hour.Hour.ToString());
+                string filePath = Path.GetFullPath(Path.Combine(search_dir, date.Year.ToString(), Month, date.Day.ToString(), hour.Hour.ToString()));
                 string fileName = Path.Combine(search_dir, date.Year.ToString(), Month, date.Day.ToString(), hour.Hour.ToString(), item.Id);
+                string localFile = Path.Combine(output_dir, item.Id.ToString());
                 string password = Get_pwd(item.Hostname);
 
-                
 
                 using (var client = new SftpClient(item.Hostname, 22, user, password))
                 {
                     try
                     {
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine("\n" + $"Downloading {item.Id} from {filePath} on {item.Hostname}...");
+                        Console.WriteLine("\n" + $"Downloading {fileName} from {filePath} on {item.Hostname}...");
+
                         client.Connect();
 
-                        using (Stream file = File.OpenWrite(Path.Combine(output_dir, item.Id.ToString())))
+                        var files = client.ListDirectory(filePath);
+                        Console.WriteLine(files);
+
+                        foreach (var file in files)
                         {
-                            client.DownloadFile(fileName, file);
+                            Console.WriteLine(file.FullName);
+                        }
+
+                        using (Stream file = File.OpenWrite(localFile))
+                        {
+                            client.DownloadFile(Path.GetFullPath(fileName), file);
                         }
 
                         Console.WriteLine($"Downloaded {item.Id} from {item.Hostname}.");
-                        Thread.Sleep(2000);
                     }
 
-                    catch (System.Net.Sockets.SocketException e)
+                    catch (Exception e)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to SocketException.");
+                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname}.");
 
                         // Log result to logfile.
                         using (StreamWriter error = File.AppendText(logfile))
                         {
-                            error.WriteLine($"Failed Downloading {item.Id} in {filePath} from {item.Hostname} due to {e.Message}.");
-                        }
-                    }
-
-                    catch (SshException e)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to SshException.");
-
-
-                        // Log result to logfile.
-                        using (StreamWriter error = File.AppendText(logfile))
-                        {
-                            error.WriteLine($"Failed Downloading {item.Id} in {filePath} from {item.Hostname} due to {e.Message}.");
-                        }
-                    }
-
-                    catch (FileNotFoundException e)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine($"Failed downloading {item.Id} from {item.Hostname} due to FileNotFoundException in {filePath}.");
-
-                        // Log result to logfile.
-                        using (StreamWriter error = File.AppendText(logfile))
-                        {
-                            error.WriteLine($"Failed Downloading {item.Id} in {filePath} from {item.Hostname} due to {e.Message}.");
+                            error.WriteLine($"Failed Downloading {item.Id} in {filePath} from {item.Hostname} due to {e}.");
                         }
                     }
                 }
