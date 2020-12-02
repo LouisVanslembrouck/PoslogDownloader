@@ -106,3 +106,39 @@ Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168
    at Renci.SshNet.Session.Connect()
    at Renci.SshNet.BaseClient.Connect()
    at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+
+Log from last run on woensdag 2 december 2020 - 18:55:35.
+
+Failed Downloading 4d41c8bc-89f7-4387-ae1d-2489e3e5e8e9.xml in C:/Centric/Backup/OBP\2020\07\9\15 from CABE9999SCP20 due to Renci.SshNet.Common.SftpPathNotFoundException: No such file
+   at Renci.SshNet.Common.AsyncResult.EndInvoke()
+   at Renci.SshNet.Sftp.SftpSession.EndOpen(SftpOpenAsyncResult asyncResult)
+   at Renci.SshNet.ServiceFactory.CreateSftpFileReader(String fileName, ISftpSession sftpSession, UInt32 bufferSize)
+   at Renci.SshNet.SftpClient.InternalDownloadFile(String path, Stream output, SftpDownloadAsyncResult asyncResult, Action`1 downloadCallback)
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 111.
+Failed Downloading 0e840db9-f9ab-4635-89db-4115d82ca61f.xml in C:/Centric/Backup/OBP\2020\07\10\10 from CABE9999SCP20 due to Renci.SshNet.Common.SftpPathNotFoundException: No such file
+   at Renci.SshNet.Common.AsyncResult.EndInvoke()
+   at Renci.SshNet.Sftp.SftpSession.EndOpen(SftpOpenAsyncResult asyncResult)
+   at Renci.SshNet.ServiceFactory.CreateSftpFileReader(String fileName, ISftpSession sftpSession, UInt32 bufferSize)
+   at Renci.SshNet.SftpClient.InternalDownloadFile(String path, Stream output, SftpDownloadAsyncResult asyncResult, Action`1 downloadCallback)
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 111.
+
+Log from last run on woensdag 2 december 2020 - 18:56:47.
+
+Failed Downloading 4d41c8bc-89f7-4387-ae1d-2489e3e5e8e9.xml in C:/Centric/Backup/OBP\2020\07\9\15 from CABE9999SCP20 due to Renci.SshNet.Common.SftpPathNotFoundException: No such file
+   at Renci.SshNet.Common.AsyncResult.EndInvoke()
+   at Renci.SshNet.Sftp.SftpSession.EndOpen(SftpOpenAsyncResult asyncResult)
+   at Renci.SshNet.ServiceFactory.CreateSftpFileReader(String fileName, ISftpSession sftpSession, UInt32 bufferSize)
+   at Renci.SshNet.SftpClient.InternalDownloadFile(String path, Stream output, SftpDownloadAsyncResult asyncResult, Action`1 downloadCallback)
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 111.
+Failed Downloading 0e840db9-f9ab-4635-89db-4115d82ca61f.xml in C:/Centric/Backup/OBP\2020\07\10\10 from CABE9999SCP20 due to Renci.SshNet.Common.SftpPathNotFoundException: No such file
+   at Renci.SshNet.Common.AsyncResult.EndInvoke()
+   at Renci.SshNet.Sftp.SftpSession.EndOpen(SftpOpenAsyncResult asyncResult)
+   at Renci.SshNet.ServiceFactory.CreateSftpFileReader(String fileName, ISftpSession sftpSession, UInt32 bufferSize)
+   at Renci.SshNet.SftpClient.InternalDownloadFile(String path, Stream output, SftpDownloadAsyncResult asyncResult, Action`1 downloadCallback)
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 111.
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\07\10\10 from CABE9999SCP20 due to Renci.SshNet.Common.SftpPathNotFoundException: No such file
+   at Renci.SshNet.Common.AsyncResult.EndInvoke()
+   at Renci.SshNet.Sftp.SftpSession.EndOpen(SftpOpenAsyncResult asyncResult)
+   at Renci.SshNet.ServiceFactory.CreateSftpFileReader(String fileName, ISftpSession sftpSession, UInt32 bufferSize)
+   at Renci.SshNet.SftpClient.InternalDownloadFile(String path, Stream output, SftpDownloadAsyncResult asyncResult, Action`1 downloadCallback)
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 111.
