@@ -1,0 +1,198 @@
+
+Log from last run on Wednesday, 2 December 2020 - 14:05:16.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 14:12:44.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 14:14:54.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 14:16:18.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 15:00:34.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 15:16:05.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 15:22:22.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 15:22:50.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 15:23:34.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 18:09:53.
+
+
+Log from last run on Wednesday, 2 December 2020 - 18:15:41.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 106.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 106.
+
+Log from last run on Wednesday, 2 December 2020 - 18:16:23.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 106.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 106.
+
+Log from last run on Wednesday, 2 December 2020 - 18:42:25.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 106.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 106.
+
+Log from last run on Wednesday, 2 December 2020 - 18:53:40.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+
+Log from last run on Wednesday, 2 December 2020 - 19:01:19.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+
+Log from last run on Wednesday, 2 December 2020 - 19:01:52.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 106.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 106.
+
+Log from last run on Wednesday, 2 December 2020 - 19:06:29.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+
+Log from last run on Wednesday, 2 December 2020 - 19:22:30.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+
+Log from last run on Wednesday, 2 December 2020 - 19:25:09.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+
+Log from last run on Wednesday, 2 December 2020 - 19:26:55.
+
+Failed Downloading test.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
+Failed Downloading test2.txt in C:\Centric\Backup\OBP\2020\01\22\18 from 192.168.0.164 due to Renci.SshNet.Common.SshAuthenticationException: Permission denied (password).
+   at Renci.SshNet.ClientAuthentication.Authenticate(IConnectionInfoInternal connectionInfo, ISession session)
+   at Renci.SshNet.ConnectionInfo.Authenticate(ISession session, IServiceFactory serviceFactory)
+   at Renci.SshNet.Session.Connect()
+   at Renci.SshNet.BaseClient.Connect()
+   at PoslogDownloader.Program.Main() in C:\Users\louis\Source\Repos\LouisVanslembrouck\PoslogDownloader\PoslogDownloader\Program.cs:line 107.
