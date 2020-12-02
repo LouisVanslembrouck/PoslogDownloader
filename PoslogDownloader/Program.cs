@@ -111,7 +111,6 @@ namespace PoslogDownloader
                         }
 
                         Console.WriteLine($"Downloaded {item.Id} from {item.Hostname}.");
-                        client.Disconnect();
                         Thread.Sleep(2000);
                     }
 
