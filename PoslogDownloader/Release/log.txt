@@ -1,0 +1,25 @@
+
+Log from last run on Wednesday, 2 December 2020 - 14:05:16.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 14:12:44.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 14:14:54.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 14:16:18.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+
+Log from last run on Wednesday, 2 December 2020 - 15:00:34.
+
+Failed Downloading test.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
+Failed Downloading test2.txt in C:/Centric/Backup/OBP\2020\01\22\18 from 192.168.0.164 due to Permission denied (password)..
